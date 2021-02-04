@@ -28,7 +28,6 @@ class QuestionsController < ApplicationController
     end
     
     def update
-        binding.pry 
         if @question
             @question.update(question_params)
             redirect_to topic_path(params[:topic_id])
