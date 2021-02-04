@@ -1,5 +1,10 @@
+<h1> <%= @topic.name if @topic %> </h1>
+
 <%= render partial: 'display', locals: { post: @post }%>
 
 <br> <%= button_to "Edit Post", edit_topic_post_path(@post), :method => :get, class: "button3"  %> 
 
+<%= render :partial => "comments/display", :collection => @post.comments, :as => :comment %>
+
 <br> <%= render "comments/form" %>
+

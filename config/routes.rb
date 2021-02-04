@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  
 
   resources :questions do 
     resources :comments 
@@ -25,6 +26,8 @@ Rails.application.routes.draw do
   end 
 
   resources :comments, only: [:new, :index]
+
+  post "topics/:topic_id/questions/:id/solved", to: "questions#solved", as: 'solved' 
 
   
   

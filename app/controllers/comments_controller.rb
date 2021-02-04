@@ -9,16 +9,21 @@ class CommentsController < ApplicationController
     
     def new 
         @comment = Comment.new
-        @post = Post.find_by(id: params[:post_id])
+        if @post 
+            @post = Post.find_by(id: params[:post_id])
+        elsif @question
+            @question = Question.find_by(id: params[:post_id])
+        else redirect_to :back
+        end 
     end 
 
     def create 
         @comment = Comment.new(comment_params)
         if @comment.save && @comment.post
-            redirect_to post_comments_path
-        elsif @comment.save && @comment.quesion
-            redirect_to question_comments_path
-        else redirect_to new_comment_path
+            redirect_to topic_post_path(@comment.topic, @comment.post)
+        elsif @comment.save && @comment.question
+            redirect_to topic_question_path(@comment.topic, @comment.question)
+        else redirect_to :back
         end  
     end 
 
@@ -26,7 +31,12 @@ class CommentsController < ApplicationController
     end 
 
     def edit
-        @post = Post.find_by(id: params[:post_id])
+        if @post 
+            @post = Post.find_by(id: params[:post_id])
+        elsif @question
+            @question = Question.find_by(id: params[:post_id])
+        else redirect_to :back
+        end 
     end
     
     def update

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
     
-    before_action :find_question, only: [:show, :edit, :update]
+    before_action :find_question, only: [:show, :edit, :update, :solved]
 
     def index
         @questions = Question.all 
@@ -21,17 +21,25 @@ class QuestionsController < ApplicationController
 
     def show 
         @comment = Comment.new
+        @topic = Topic.find_by(id: params[:topic_id])
     end 
 
     def edit
     end
     
     def update
+        binding.pry 
         if @question
             @question.update(question_params)
             redirect_to topic_path(params[:topic_id])
         else redirect_to edit_topic_question_path(params[:topic_id], @question) 
         end 
+    end 
+
+    def solved 
+        @question.answered = true 
+        @question.save
+        redirect_to topic_question_path(params[:topic_id], @question) 
     end 
     
 
@@ -42,7 +50,7 @@ class QuestionsController < ApplicationController
     end 
 
     def question_params
-        params.require(:question).permit(:user_id, :topic_id, :content)
+        params.require(:question).permit(:user_id, :topic_id, :answered, :content)
     end 
 end
 
