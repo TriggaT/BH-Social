@@ -24,9 +24,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav pull-right">
       <% if current_user %>
-        <li class="active"><%= link_to "People", root_path %></li>
-        <li><%= link_to "Places", new_user_registration_path %></li>
-        <li><%= link_to "Events", new_user_session_path %></li>
+        <li class="active"><%= link_to "People", topic_path(topic_people)%></li>
+        <li><%= link_to "Places", topic_path(topic_places) %></li>
+        <li><%= link_to "Events", topic_path(topic_events) %></li>
         <% else %>
         <li class="active"><%= link_to "Home", root_path %></li>
         <li><%= link_to "Sign Up", new_user_registration_path %></li>
@@ -49,6 +49,7 @@
       <%= content_tag :div, msg, class: name %>
     <% end -%>
     <%= yield %>
+    
     <%if current_user %>
     <br><br> <br><%= button_to "Log Out", destroy_user_session_path, :method => :delete, class: "button5" %><br><br>
     <% end %>

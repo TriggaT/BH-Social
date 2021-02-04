@@ -1,11 +1,17 @@
 <h1> <%= @topic.name if @topic %> </h1>
+<% if @question.answered %>
+ <h4 class="intro" style="color:green;"> <%= @question.content %> </h4> 
+ <% else %>
+ <h4 class="intro" style="color:red;"> <%= @question.content %> </h4> 
+ <% end %>
 
- <h4 class="intro"> <%=  link_to "#{@question.content}", question_comments_path(@question) %> </h4> <br>
+ <% if @question.user == current_user %>
 
-<%= button_to "Modify Question", edit_question_path(@question), :method => :get, class: "button3"  %> <br> 
+<%= button_to "Modify Question", edit_question_path(@question), :method => :get, class: "button3"  %> 
 <%= button_to "This Question is Solved", solved_path, class: "button3"  %>  <br>
+<% end %>
 
 
-<%= render :partial => "comments/display", :collection => @question.comments, :as => :comment %>
+<%= render :partial => "comments/display", :collection => @question.comments.reverse, :as => :comment %>
 
 <%= render "comments/form" %>

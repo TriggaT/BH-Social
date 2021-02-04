@@ -1,9 +1,13 @@
 <h4>
 <ul>
 <% if @post %>
-<li> <%= link_to "#{comment.content}", edit_post_comment_path(params[:id], comment) %> </li>
+<li> <%= "#{comment.user.name}: #{comment.content}"  %> </li>
 <% else @question %> 
-<li> <%= link_to "#{comment.content}", edit_question_comment_path(params[:id], comment) %> </li>
+<% if comment.answer %>
+<li style="color:green;">  <%= "#{comment.user.name} answers #{comment.content}" %> </li>
+<% else %>
+<li> <%= "#{comment.user.name}: #{comment.content}"  %> </li>
+<% end %>
 <% end %>
 </ul>
 

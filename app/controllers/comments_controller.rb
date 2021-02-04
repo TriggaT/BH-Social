@@ -42,11 +42,11 @@ class CommentsController < ApplicationController
     def update
         if @comment && @comment.post
             @comment.update(comment_params)
-            redirect_to post_comments_path
+            redirect_to topic_post_path(@comment.topic, @comment.post)
         elsif @comment && @@comment.quesion
             @comment.update(comment_params) 
-            redirect_to question_comments_path
-        else redirect_to new_comment_path
+            redirect_to topic_question_path(@comment.topic, @comment.question)
+        else redirect_to redirect_to :back
         end  
     end 
     
@@ -58,6 +58,6 @@ class CommentsController < ApplicationController
     end 
 
     def comment_params
-        params.require(:comment).permit(:post_id, :question_id, :content)
+        params.require(:comment).permit(:post_id, :question_id, :user_id, :answer, :content)
     end 
 end

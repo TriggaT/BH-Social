@@ -2,9 +2,13 @@
 
 <%= render partial: 'display', locals: { post: @post }%>
 
+ <% if @post.user == current_user %>
+
 <br> <%= button_to "Edit Post", edit_topic_post_path(@post), :method => :get, class: "button3"  %> 
 
-<%= render :partial => "comments/display", :collection => @post.comments, :as => :comment %>
+<% end %>
+
+<%= render :partial => "comments/display", :collection => @post.comments.reverse, :as => :comment %>
 
 <br> <%= render "comments/form" %>
 
