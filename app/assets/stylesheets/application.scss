@@ -1,0 +1,150 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+ @import "bootstrap";
+ @import "bootstrap-sprockets";
+ 
+
+ /* USING BOOTSTRAP 3.0.3 */
+body {
+	padding-top: 60px;
+}
+nav {
+  .navbar-brand {font-size: 30px; color: gold;}
+	.navbar-toggle {margin: 13px 15px 13px 0;}
+	a {
+		font-size: 18px;
+		padding-bottom: 20px !important;
+		padding-top: 20px !important;
+    transition: all 0.3s ease;
+    color: gold;
+	}
+}
+
+
+
+nav.navbar.shrink {
+	min-height: 35px;
+  .navbar-brand {font-size: 25px; color: gold;}
+  a {
+    font-size: 15px;
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+    color: gold;
+  }
+  .navbar-toggle {
+    margin: 8px 15px 8px 0;
+    padding: 4px 5px;
+  }
+}
+
+nav.navbar img {
+  height: 40px;
+  margin: 5px;
+  margin-left: -370px;
+
+}
+
+.button3 {
+  display:inline-block;
+  padding:0.3em 1.2em;
+  margin:0 0.3em 0.3em 0;
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:black;
+  background-color:gold;
+  text-align:center;
+  transition: all 0.2s;
+  }
+  
+  .button3:hover {
+  background-color:green;
+  }
+  @media all and (max-width:30em){
+  .button3 {
+    display:block;
+    margin:0.2em auto;
+    }
+  }
+
+h4.intro {
+  font-size: 18px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+h4.qoute {
+  color: green;
+}
+
+.main-info {
+  margin-top: 3%;
+  margin-left: 0%;
+  display: inline-block;
+  float: left;
+  width: 50%;// could be 100px for example
+}
+
+
+#post_content {
+  margin: 0px;
+  height: 175px;
+  width: 425px;
+}
+
+#question_content {
+  margin: 0px;
+  height: 100px;
+  width: 375px;
+}
+
+#comment_content {
+  margin: 0px;
+  width: 428px;
+  height: 169px;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.button5 {
+  border-radius: 45%;
+  background-color: gold;
+}
+
+.button5:hover {
+  background-color:red;
+  }
+
+  .topic-info {
+    margin-top: 3%;
+    margin-left: 0%;
+    display: inline-block;
+    float: left;
+    width: 33.33%;// could be 100px for example
+  }
+  
+
+ 

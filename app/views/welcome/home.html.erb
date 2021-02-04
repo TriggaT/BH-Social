@@ -1,32 +1,35 @@
-<%# Add the Facebook login link here %>
-<h2>Sign up</h2>
+<h1> Hey <%= current_user.name if current_user %>! </h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<br><h4 class="intro"> Black History Social is website to learn and inform with other people about the history of African and African-Americans across the known universe. 
+The content on the website is user generated and can be public knowledge or local knowledge about people, places, and events that may not be commonly known. 
+You can think of it as a user generated encyclopedia built for users by users. </h4>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<br> <h4 class="qoute"> "A people without knowledge of their past history, origin and culture is like a tree without roots"  </h4>
+<h4 class="qoute"> - Marcus Garvey </h4>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+<% if current_user  %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+<br><h4 class="intro"> You can click <em> Knowledge is Power </em> to return here at any point. The buttons below will help you get started and familar with the process. You can either make a post about something you learned or know
+in African or African-American history, with the title being the person, place, or event your post is about, or you can post a question in any of those 
+categories to other people and users of Black History Social. You, as well, other users are able to comment on other posts or questions, and you can also attempt 
+to answer other user's questions but only they can determine if the question has been answered. Check current topics below: </h4> <br>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+<div class="container topic-info">
+<%= button_to "People", topic_path(topic_people), :method => :get, class: "button3"  %> 
+<%= %>
+</div>
 
+
+<div class="container topic-info">
+<%= button_to "Places", topic_path(topic_places), :method => :get, class: "button3"  %> 
+</div>
+
+<div class="container topic-info">
+<%= button_to "Events", topic_path(topic_events), :method => :get, class: "button3"  %> 
+</div>
+
+<% end %> 
+
+<br><br>
 

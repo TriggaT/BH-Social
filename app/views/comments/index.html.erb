@@ -1,0 +1,13 @@
+
+<% if @post %>
+ <%= render partial: 'posts/display', locals: { post: @post } %> 
+ <% end %>
+
+<h4> Comments </h4>
+<p>
+<ul>
+<% @post.comments.each do |comment| %>
+<li> <%= link_to "#{comment.content}", edit_post_comment_path(params[:post_id], comment) %> </li>
+<% end %>
+</ul>
+</p>

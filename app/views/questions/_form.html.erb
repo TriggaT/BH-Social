@@ -1,0 +1,9 @@
+<%= form_for [@topic, @question] do |f| %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :topic_id, value: params[:topic_id] %>
+<span class="largeFont" ><%= f.label :content, "Question" %> </span> <br>
+<%= f.text_area :content %> <br>  <br> 
+<%= f.submit :class => 'button3' %> 
+<% end %>
+
+

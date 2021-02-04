@@ -1,0 +1,5 @@
+<br> <h4 class="intro"> <%=   @question.content %> </h4>
+
+<br> <%= button_to "Modify Question", edit_question_path(@question), :method => :get, class: "button3"  %> 
+
+<%= render "comments/form" %>

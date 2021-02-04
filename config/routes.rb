@@ -1,10 +1,37 @@
 Rails.application.routes.draw do
+
+  root 'welcome#home'
+
+  devise_for :users, :controllers => { registrations: 'registrations',  :omniauth_callbacks => "users/omniauth_callbacks" }, :paths => 'users'
+ 
+  
+  resources :user do  
+    resources :posts
+    resources :questions 
+  end 
+
+  resources :topics do
+    resources :questions
+    resources :posts
+  end
+
+
+  resources :questions do 
+    resources :comments 
+  end 
+
+  resources :posts do 
+    resources :comments 
+  end 
+
+  resources :comments, only: [:new, :index]
+
+  
+  
+  
   
 
-  resources :questions
-  resources :posts
-  resources :topics
-  devise_for :users, :controllers => { registrations: 'registrations' }
+
   
 
   

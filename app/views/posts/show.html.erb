@@ -1,0 +1,5 @@
+<%= render partial: 'display', locals: { post: @post }%>
+
+<br> <%= button_to "Edit Post", edit_topic_post_path(@post), :method => :get, class: "button3"  %> 
+
+<br> <%= render "comments/form" %>
