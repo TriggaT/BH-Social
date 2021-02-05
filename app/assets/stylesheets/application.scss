@@ -133,6 +133,7 @@ label {
 .button5 {
   border-radius: 45%;
   background-color: gold;
+  align-content: center;
 }
 
 .button5:hover {
@@ -145,6 +146,16 @@ label {
     display: inline-block;
     float: left;
     width: 33.33%;// could be 100px for example
+  }
+
+  footer.branding {
+    border-top: 1px solid black;
+    margin-top: 20px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
   }
   
 

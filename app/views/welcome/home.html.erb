@@ -1,4 +1,4 @@
-<h1> Hey <%= current_user.name if current_user %>! </h1>
+<h1> Welcome <%= current_user.name if current_user %>! </h1>
 
 <br><h4 class="intro"> Black History Social is website to learn and inform with other people about the history of African and African-Americans across the known universe. 
 The content on the website is user generated and can be public knowledge or local knowledge about people, places, and events that may not be commonly known. 
@@ -11,9 +11,17 @@ You can think of it as a user generated encyclopedia built for users by users. <
 
 <br><h4 class="intro"> You can click <em> Knowledge is Power </em> to return here at any point. The buttons below will help you get started and familar with the process. You can either make a post about something you learned or know
 in African or African-American history, with the title being the person, place, or event your post is about, or you can post a question in any of those 
-categories to other people and users of Black History Social. You, as well, other users are able to comment on other posts or questions, and you can also attempt 
-to answer other user's questions but only they can determine if the question has been answered. Check current topics below: </h4> <br>
+categories to other people and users of <strong> Black History Social</strong>. Everyone is able to comment on other posts or questions, and you can also attempt 
+to answer other user's questions but only they can determine if the question has been answered. </h4> <br>
 
+<h4> You currently have <%= current_user.posts.count %> posts, <%=  current_user.questions.count %> questions, and <%= current_user.comments.count %> comment(s)/answer(s). </h4> 
+<h4> <u> <%= link_to "View Profile", user_path(current_user) %> </u></h4> 
+
+<%= button_to "Most Frequent Poster", most_posts_path, :method => :get, class: "button3"  %> 
+
+
+
+<br><h4> Current topics below: </h4> 
 
 <div class="container topic-info">
 <%= button_to "People", topic_path(topic_people), :method => :get, class: "button3"  %> 

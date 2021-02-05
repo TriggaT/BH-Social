@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :user do  
     resources :posts
     resources :questions 
+    resources :comments
   end 
 
   resources :topics do
@@ -25,9 +26,10 @@ Rails.application.routes.draw do
     resources :comments 
   end 
 
-  resources :comments, only: [:new, :index]
+  resources :comments
 
-  post "topics/:topic_id/questions/:id/solved", to: "questions#solved", as: 'solved' 
+  post "topics/:topic_id/questions/:id/solved", to: "questions#solved", as: 'solved'
+  match "users/most-frequent-poster", to: "user#mf_poster", as: "most_posts", via: [:get, :post]
 
   
   

@@ -2,12 +2,21 @@
 <ul>
 <% if @post %>
 <li> <%= "#{comment.user.name}: #{comment.content}"  %> </li>
-<% else @question %> 
-<% if comment.answer %>
-<li style="color:green;">  <%= "#{comment.user.name} answers #{comment.content}" %> </li>
-<% else %>
-<li> <%= "#{comment.user.name}: #{comment.content}"  %> </li>
-<% end %>
+<% elsif @question %> 
+    <% if comment.answer %>
+        <li style="color:green;">  <%= "#{comment.user.name} answered #{comment.content}" %> </li>
+    <% else %>
+        <li> <%= "#{comment.user.name}: #{comment.content}"  %> </li>
+    <% end %>
+
+    <% else @user %>
+        <% if comment.answer %>
+            <li style="color:green;">  <%= "#{comment.user.name} answered #{comment.content}" %> </li>
+        <% else %>
+       
+            <li> <%= "#{comment.user.name}: #{comment.content}"  %> </li>
+        <% end %>
+
 <% end %>
 </ul>
 

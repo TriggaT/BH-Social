@@ -25,6 +25,7 @@ class QuestionsController < ApplicationController
     end 
 
     def edit
+        @topic = Topic.find_by(id: params[:topic_id])
     end
     
     def update

@@ -1,0 +1,23 @@
+<h2> <%= @user.name %> </h2>
+
+<div class="container topic-info">
+<h2> <em> <u> Shared Knowledge </u> </em> </h2>
+<%= render :partial => "posts/display", :collection => @user.posts.reverse, :as => :post %>
+</div>
+
+
+<div class="container topic-info">
+<h2> <em> <u> Questions </u> </em> </h2>
+<% @user.questions.each do |question| %>
+ <h4> <%= question.content %>  </h4> 
+<% end %>
+</div>
+
+<div class="container topic-info">
+<h2> <em> <u> Comments/Answers </u> </em> </h2>
+<% if current_user %>
+<%= render :partial => "comments/display", :collection => @user.comments_to_posts.reverse, :as => :comment %>
+<% else %>
+<%= render :partial => "comments/display", :collection => @user.comments.reverse, :as => :comment %>
+<% end%>
+</div>

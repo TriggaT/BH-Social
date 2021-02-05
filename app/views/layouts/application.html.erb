@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav pull-right">
       <% if current_user %>
-        <li class="active"><%= link_to "People", topic_path(topic_people)%></li>
+        <li><%= link_to "People", topic_path(topic_people)%></li>
         <li><%= link_to "Places", topic_path(topic_places) %></li>
         <li><%= link_to "Events", topic_path(topic_events) %></li>
         <% else %>
@@ -50,12 +50,21 @@
     <% end -%>
     <%= yield %>
     
-    <%if current_user %>
-    <br><br> <br><%= button_to "Log Out", destroy_user_session_path, :method => :delete, class: "button5" %><br><br>
-    <% end %>
+    
   </div> <!-- /.text-center -->
  </div> <!-- /.container -->
+  <br><br> <center> <%if current_user %>
+    <%= link_to "Log Out", destroy_user_session_path, :method => :delete, class: "logout" %>
+    <% end %>
+    </center>
+    
 
- 
   </body>
+    
+  <footer class="branding">
+        <small>&copy; 2021 <strong>Black Histroy Social </strong></small>
+       
+      </footer>
+
+  
 </html>

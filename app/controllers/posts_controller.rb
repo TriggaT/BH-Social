@@ -6,12 +6,14 @@ class PostsController < ApplicationController
     end 
     
     def new 
+        binding.pry
         @post = Post.new
         @topic = Topic.find_by(id: params[:topic_id])
     end 
 
     def create 
         @post = Post.new(post_params)
+        binding.pry 
         if @post.save 
             redirect_to topic_path(params[:topic_id])
         else redirect_to new_topic_post_path(params[:topic_id]) 
@@ -29,6 +31,7 @@ class PostsController < ApplicationController
     end
     
     def update
+        binding.pry 
         if @post
             @post.update(post_params)
             redirect_to topic_path(params[:topic_id])

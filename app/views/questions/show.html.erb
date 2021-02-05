@@ -7,7 +7,7 @@
 
  <% if @question.user == current_user %>
 
-<%= button_to "Modify Question", edit_question_path(@question), :method => :get, class: "button3"  %> 
+<%= button_to "Modify Question", edit_topic_question_path(@topic, @question), :method => :get, class: "button3"  %> 
 <%= button_to "This Question is Solved", solved_path, class: "button3"  %>  <br>
 <% end %>
 

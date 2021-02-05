@@ -1,10 +1,10 @@
 <h1> <%= @topic.name if @topic %> </h1>
 
-<%= render partial: 'display', locals: { post: @post }%>
+<%= render partial: 'display', locals: { post: @post }%> <br>
 
  <% if @post.user == current_user %>
 
-<br> <%= button_to "Edit Post", edit_topic_post_path(@post), :method => :get, class: "button3"  %> 
+<br> <%= button_to "Edit Post", edit_topic_post_path(@topic, @post), :method => :get, class: "button3"  %> 
 
 <% end %>
 
