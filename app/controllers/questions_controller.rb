@@ -3,12 +3,13 @@ class QuestionsController < ApplicationController
     before_action :find_question, only: [:show, :edit, :update, :solved]
 
     def index
+        find_topic
         @questions = Question.all 
     end 
     
     def new 
         @question = Question.new
-        @topic = Topic.find_by(id: params[:topic_id])
+        find_topic
     end 
 
     def create 
@@ -21,11 +22,11 @@ class QuestionsController < ApplicationController
 
     def show 
         @comment = Comment.new
-        @topic = Topic.find_by(id: params[:topic_id])
+        find_topic
     end 
 
     def edit
-        @topic = Topic.find_by(id: params[:topic_id])
+        find_topic
     end
     
     def update
@@ -44,10 +45,6 @@ class QuestionsController < ApplicationController
     
 
     private 
-
-    def find_question
-        @question = Question.find_by(id: params[:id])
-    end 
 
     def question_params
         params.require(:question).permit(:user_id, :topic_id, :answered, :content)

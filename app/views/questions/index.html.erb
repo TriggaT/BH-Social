@@ -1,7 +1,8 @@
+<h1> <%= @topic.name if @topic %> </h1>
+
 <h2> Questions that need answers! </h2>
 
-<ul>
-<% @questions.each do |question| %>
-<li> <h4 class="intro"> <%= link_to "#{question.content}", question_path(question) %> </h4> </li>
+<% @topic.questions.each do |question| %>
+<h4 class="intro"> <%= link_to "#{question.content}", question_path(question) %> </h4>
 <% end %>
-</ul>
+

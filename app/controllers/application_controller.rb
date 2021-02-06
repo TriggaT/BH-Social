@@ -5,5 +5,21 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     request.env['omniauth.origin'] || root_path
-end
+  end
+
+  private 
+
+    def set_post
+        @post = Post.find_by(id: params[:id])
+    end
+
+
+    def find_question
+      @question = Question.find_by(id: params[:id])
+    end
+    
+    def find_topic
+      @topic = Topic.find_by(id: params[:topic_id])
+    end 
+
 end

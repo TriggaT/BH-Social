@@ -11,7 +11,7 @@
 <%= form_for [@question, @comment] do |f| %>
 <%= f.hidden_field :question_id, value: @question.id %>
 <%= f.hidden_field :user_id, value: current_user.id %>
-<span class="largeFont" ><%= f.label :answer, "Please check if this is an answer!" %> </span>  <br>
+<span class="largeFont" ><%= f.label :answer, "Check box if this is an attempted answer!" %> </span>  <br>
 <%= f.check_box :answer, {class:"form-check-input", type:"checkbox"}, true, false  %> <br> <br>
 <span class="largeFont" ><%= f.label :content, "Comment/Answer" %>  </span> <br>
 <%= f.text_area :content %> <br>  <br>

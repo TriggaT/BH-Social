@@ -3,16 +3,16 @@ class CommentsController < ApplicationController
 
     def index 
         @comments = Comment.all 
-        @post = Post.find_by(id: params[:post_id])
+        set_post
     end 
 
     
     def new 
         @comment = Comment.new
         if @post 
-            @post = Post.find_by(id: params[:post_id])
+            set_post
         elsif @question
-            @question = Question.find_by(id: params[:post_id])
+            find_question
         else redirect_to :back
         end 
     end 
@@ -32,9 +32,9 @@ class CommentsController < ApplicationController
 
     def edit
         if @post 
-            @post = Post.find_by(id: params[:post_id])
+            set_post
         elsif @question
-            @question = Question.find_by(id: params[:post_id])
+            find_question
         else redirect_to :back
         end 
     end
@@ -43,14 +43,13 @@ class CommentsController < ApplicationController
         if @comment && @comment.post
             @comment.update(comment_params)
             redirect_to topic_post_path(@comment.topic, @comment.post)
-        elsif @comment && @@comment.quesion
+        elsif @comment && @comment.quesion
             @comment.update(comment_params) 
             redirect_to topic_question_path(@comment.topic, @comment.question)
         else redirect_to redirect_to :back
         end  
     end 
     
-
     private 
 
     def find_comment

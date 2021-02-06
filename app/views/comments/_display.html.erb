@@ -1,23 +1,17 @@
 <h4>
-<ul>
-<% if @post %>
-<li> <%= "#{comment.user.name}: #{comment.content}"  %> </li>
+<% if @post %> 
+    <%= "#{comment.user.name}: #{comment.content}"  %> 
 <% elsif @question %> 
     <% if comment.answer %>
-        <li style="color:green;">  <%= "#{comment.user.name} answered #{comment.content}" %> </li>
+       <div class="answers"> <%= "#{comment.user.name} answered #{comment.content}"%> </div>
     <% else %>
-        <li> <%= "#{comment.user.name}: #{comment.content}"  %> </li>
+        <%= "#{comment.user.name}: #{comment.content}"  %> 
     <% end %>
-
-    <% else @user %>
-        <% if comment.answer %>
-            <li style="color:green;">  <%= "#{comment.user.name} answered #{comment.content}" %> </li>
-        <% else %>
-       
-            <li> <%= "#{comment.user.name}: #{comment.content}"  %> </li>
-        <% end %>
-
+<% else @user %>
+    <% if comment.answer %>
+      <div class="answers"> <%= "#{comment.user.name} answered #{comment.content}" %> </div>
+    <% else %>
+    <%= "#{comment.user.name}: #{comment.content}"  %>
+    <% end %>
 <% end %>
-</ul>
-
 </h4>

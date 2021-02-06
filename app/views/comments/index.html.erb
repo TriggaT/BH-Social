@@ -1,8 +1,6 @@
-
 <% if @post %>
  <%= render partial: 'posts/display', locals: { post: @post } %> 
  <% end %>
-
 <h4> Comments </h4>
 
 <%= render :partial => "display", :collection => current_user.comments, :as => :comment %>

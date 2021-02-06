@@ -5,7 +5,6 @@ class UserController < ApplicationController
     end 
 
     def mf_poster
-        binding.pry
         @user = User.most_frequent_poster
     end 
 

@@ -1,7 +1,8 @@
+<h1> <%= @topic.name if @topic %> </h1>
+
 <h2> Knowlege for sharing! </h2>
 
-<ul>
-<% @posts.each do |post| %>
-<li> <h3> <%= link_to "#{post.title}", post_path(post) %> </h3> </li>
+<% @topic.posts.each do |post| %> 
+<h3> <%= link_to "#{post.title}", post_path(post) %> </h3>
 <% end %>
-</ul>
+
