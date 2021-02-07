@@ -1,4 +1,4 @@
-<h1> Welcome <%= current_user.name if current_user %>! </h1>
+<h1> Welcome<%= ", #{current_user.name}" if current_user %>! </h1>
 
 <br><h4 class="intro"> Black History Social is website to learn and inform with other people about the history of African and African-Americans across the known universe. 
 The content on the website is user generated and can be public knowledge or local knowledge about people, places, and events that may not be commonly known. 
@@ -17,7 +17,7 @@ to answer other user's questions but only they can determine if the question has
 <h4> You currently have <%= current_user.posts.count %> posts, <%=  current_user.questions.count %> questions, and <%= current_user.comments.count %> comment(s)/answer(s). </h4> 
 <h4> <u> <%= link_to "View Profile", user_path(current_user) %> </u></h4> 
 
-<%= button_to "Most Frequent Poster", most_posts_path, :method => :get, class: "button3"  %> 
+<%= button_to "Most Frequent Poster", most_posts_path, :method => :post, class: "button3"  %> 
 
 <br><h4> Current topics below: </h4> 
 

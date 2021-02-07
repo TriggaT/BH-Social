@@ -12,10 +12,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'devise'
 gem 'dotenv-rails'
-gem 'omniauth-google-oauth2'
 gem 'bootstrap-sass', '3.3.7'
+gem 'omniauth-facebook'
 
 
 # Use jquery as the JavaScript library
@@ -28,7 +27,7 @@ gem 'turbolinks'
 # gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -39,9 +38,11 @@ gem 'turbolinks'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem "omniauth", "~> 1.9.1"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'omniauth'
+  gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+  gem 'omniauth-rails_csrf_protection'
 
   gem 'pry'
 end

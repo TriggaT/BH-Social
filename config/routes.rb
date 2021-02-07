@@ -2,10 +2,14 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  devise_for :users, :controllers => { registrations: 'registrations',  :omniauth_callbacks => "users/omniauth_callbacks" }, :paths => 'users'
+
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
  
   
-  resources :user do  
+  resources :users do  
     resources :posts
     resources :questions 
     resources :comments
@@ -29,7 +33,10 @@ Rails.application.routes.draw do
   resources :comments
 
   post "topics/:topic_id/questions/:id/solved", to: "questions#solved", as: 'solved'
-  match "users/most-frequent-poster", to: "user#mf_poster", as: "most_posts", via: [:get, :post]
+  match "users/most-frequent-poster", to: "users#mf_poster", as: "most_posts", via: [:get, :post]
+
+
+
 
   
   
