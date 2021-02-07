@@ -9,5 +9,7 @@
 <%= f.password_field :password %> <br>
 <%= f.label :password_confirmation, "Confirm Password" %> <br>
 <%= f.password_field :password_confirmation %> <br> <br>
-<%= f.submit%>
+<%= f.submit "Sign Up", class: "button3" %>
 <% end %>
+
+<br> <%= link_to "Signin with GitHub", '/auth/github', method: :post%>
