@@ -14,8 +14,10 @@ class PostsController < ApplicationController
     def create 
         @post = Post.new(post_params)
         if @post.save 
-            redirect_to topic_path(params[:topic_id])
-        else redirect_to new_topic_post_path(params[:topic_id]) 
+            redirect_to topic_path(params[:post][:topic_id])
+        else 
+            flash.now[:messages] = @post.errors.full_messages
+            render :new 
         end 
     end 
 
@@ -29,11 +31,12 @@ class PostsController < ApplicationController
     end
     
     def update
-        binding.pry 
         if @post
             @post.update(post_params)
-            redirect_to topic_path(params[:topic_id])
-        else redirect_to edit_topic_post_path(params[:topic_id], @post) 
+            redirect_to topic_path(params[:post][:topic_id])
+        else
+            flash.now[:messages] = @post.errors.full_messages
+            render :edit  
         end  
     end 
 

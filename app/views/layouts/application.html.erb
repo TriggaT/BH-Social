@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
      <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
       <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+      <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
   </head>
   <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -44,10 +45,14 @@
     <h1>Black History Social</h1>
 
 
+    
 
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
+    <% if flash[:messages] %>
+   <% flash[:messages].each do |message| %>
+      <div class="messages"><%= message %></div> <br>
+   <% end %>
+ <% end %>
+
     <%= yield %>
     
     

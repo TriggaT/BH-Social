@@ -16,7 +16,8 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to root_path
         else 
-            redirect_to new_user_path
+            flash.now[:messages] = @user.errors.full_messages
+            render :new 
         end 
 
     end 
@@ -25,10 +26,14 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
     end 
 
+    def index
+        redirect_to new_user_path 
+    end 
+
     private 
 
     def user_params
-        params.require(:user).permit(:name, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end 
 
 

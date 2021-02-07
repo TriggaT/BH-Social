@@ -35,11 +35,9 @@ Rails.application.routes.draw do
   post "topics/:topic_id/questions/:id/solved", to: "questions#solved", as: 'solved'
   match "users/most-frequent-poster", to: "users#mf_poster", as: "most_posts", via: [:get, :post]
 
+  match '/auth/:provider/callback', to: 'sessions#github', via: [:get, :post] 
+  get 'auth/failure', to:  'users#new'
 
-
-
-  
-  
   
   
 

@@ -4,7 +4,7 @@
 <%= f.hidden_field :post_id, value: @post.id %>
 <%= f.hidden_field :user_id, value: current_user.id %>
 <span class="largeFont" ><%= f.label :content, "Comment" %>  </span> <br>
-<%= f.text_area :content %> <br>  <br>
+<%= f.text_area :content, value: @comment.content %> <br>  <br>
 <%= f.submit :class => 'button3' %>  
 <% end %> 
 <% else @question %>
@@ -14,7 +14,7 @@
 <span class="largeFont" ><%= f.label :answer, "Check box if this is an attempted answer!" %> </span>  <br>
 <%= f.check_box :answer, {class:"form-check-input", type:"checkbox"}, true, false  %> <br> <br>
 <span class="largeFont" ><%= f.label :content, "Comment/Answer" %>  </span> <br>
-<%= f.text_area :content %> <br>  <br>
+<%= f.text_area :content, value: @comment.content %> <br>  <br>
 <%= f.submit :class => 'button3' %>  
 <% end %>
 <% end %>

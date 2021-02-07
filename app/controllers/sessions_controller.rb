@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    skip_before_action :verify_authenticity_token, only: :github 
     
 
   def new
@@ -15,6 +16,12 @@ class SessionsController < ApplicationController
           redirect_to login_path
       end  
           
+  end
+  
+  def github
+    @user = User.create_with_omniauth(request.env["omniauth.auth"])
+    session[:user_id] = @user.id 
+    redirect_to root_path
   end 
 
   def destroy

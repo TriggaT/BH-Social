@@ -14,9 +14,12 @@ class QuestionsController < ApplicationController
 
     def create 
         @question = Question.new(question_params)
-        if @question.save 
-            redirect_to topic_path(params[:topic_id])
-        else redirect_to new_topic_question_path(params[:topic_id]) 
+        if @question.save
+            binding.pry  
+            redirect_to topic_path(params[:question][:topic_id])
+        else 
+            flash.now[:messages] = @question.errors.full_messages
+            render :new 
         end 
     end 
 
@@ -31,9 +34,12 @@ class QuestionsController < ApplicationController
     
     def update
         if @question
+            @question
             @question.update(question_params)
-            redirect_to topic_path(params[:topic_id])
-        else redirect_to edit_topic_question_path(params[:topic_id], @question) 
+            redirect_to topic_path(params[:question][:topic_id])
+        else 
+            flash.now[:messages] = @question.errors.full_messages
+            render :edit 
         end 
     end 
 
