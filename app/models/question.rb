@@ -8,10 +8,14 @@ class Question < ApplicationRecord
 
     def valid_question
         if self.content.include? "?"
-            self.content.strip 
+            self.content = self.content.strip
+            self   
         else 
-             "#{self.content}?"
-        end 
+             self.content = "#{self.content}?"
+             self 
+        end
+        
+        binding.pry 
         
     end 
 

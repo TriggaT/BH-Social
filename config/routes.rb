@@ -2,12 +2,9 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-
-
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
- 
   
   resources :users do  
     resources :posts
@@ -19,8 +16,6 @@ Rails.application.routes.draw do
     resources :questions
     resources :posts
   end
-
-  
 
   resources :questions do 
     resources :comments 

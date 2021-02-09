@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 
     def create 
         @comment = Comment.new(comment_params)
-        if @comment.save && @comment.post
+        if @comment.save && @comment.post 
             redirect_to topic_post_path(@comment.topic, @comment.post)
         elsif @comment.save && @comment.question
             redirect_to topic_question_path(@comment.topic, @comment.question)

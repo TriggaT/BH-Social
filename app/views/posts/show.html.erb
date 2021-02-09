@@ -8,6 +8,7 @@
 
 <% end %>
 
+
 <%= render :partial => "comments/display", :collection => @post.comments.reverse, :as => :comment %>
 
 <br> <%= render "comments/form" %>

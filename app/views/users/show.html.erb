@@ -2,14 +2,21 @@
 
 <div class="container topic-info">
 <h2> <em> <u> Shared Knowledge </u> </em> </h2>
-<%= render :partial => "posts/display", :collection => @user.posts.reverse, :as => :post %>
+<% @user.posts.reverse.each do |post| %>
+<h4><%= link_to "#{post.title.titlecase}", topic_post_path(post.topic, post) %> <br> </h4>
+<% end %>
 </div>
 
 <div class="container topic-info">
 <h2> <em> <u> Questions </u> </em> </h2>
 <% @user.questions.each do |question| %>
- <h4> <%= question.content %>  </h4> 
+<% if question.answered %>
+ <h4 style="color:green;"> <%= question.content %>  </h4> 
+ <% else %>
+ <h4> <%= question.content %>  </h4>
+ <% end %> 
 <% end %>
+
 </div>
 
 <div class="container topic-info">

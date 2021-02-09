@@ -14,8 +14,8 @@ class QuestionsController < ApplicationController
 
     def create 
         @question = Question.new(question_params)
+        @question.valid_question
         if @question.save
-            binding.pry  
             redirect_to topic_path(params[:question][:topic_id])
         else 
             flash.now[:messages] = @question.errors.full_messages
@@ -34,7 +34,6 @@ class QuestionsController < ApplicationController
     
     def update
         if @question
-            @question
             @question.update(question_params)
             redirect_to topic_path(params[:question][:topic_id])
         else 
