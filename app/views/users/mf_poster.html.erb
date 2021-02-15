@@ -11,9 +11,9 @@
 <h2> <em> <u> Questions </u> </em> </h2>
 <% @user.questions.each do |question| %>
 <% if question.answered %>
- <h4 style="color:green;"> <%= question.content %>  </h4> 
+ <h4> <%= link_to "#{question.content}", topic_question_path(question.topic, question), class: "answers"  %>  </h4> 
  <% else %>
- <h4> <%= question.content %>  </h4>
+ <h4> <%=link_to "#{question.content}", topic_question_path(question.topic, question)  %>  </h4>
  <% end %> 
 <% end %>
 </div>

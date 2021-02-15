@@ -2,9 +2,6 @@ class UsersController < ApplicationController
 
     
 
-    def mf_poster
-        @user = User.most_frequent_poster
-    end 
 
     def new 
         @user = User.new 
@@ -23,11 +20,20 @@ class UsersController < ApplicationController
     end 
 
     def show 
+        if params[:id] == "most-frequent-poster"
+            @user = User.most_frequent_poster
+            render :mf_poster
+        else 
         @user = User.find_by(id: params[:id])
+        end 
     end 
 
     def index
         redirect_to new_user_path 
+    end 
+
+    def mf_poster
+        @user = User.most_frequent_poster
     end 
 
     private 
