@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     
     def new 
         @comment = Comment.new
+        binding.pry
         if @post 
             set_post
         elsif @question
@@ -46,7 +47,7 @@ class CommentsController < ApplicationController
         elsif @comment && @comment.quesion
             @comment.update(comment_params) 
             redirect_to topic_question_path(@comment.topic, @comment.question)
-        else redirect_to redirect_to :back
+        else redirect_to :back
         end  
     end 
     

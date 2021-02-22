@@ -18,8 +18,6 @@ class Question < ApplicationRecord
         else 
             self 
         end
-        
-        
     end 
 
 

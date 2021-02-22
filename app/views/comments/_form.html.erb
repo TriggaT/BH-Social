@@ -1,5 +1,6 @@
 
 <% if @post %>
+<%= binding.pry %>
 <%= form_for [@post, @comment] do |f| %>
 <%= f.hidden_field :post_id, value: @post.id %>
 <%= f.hidden_field :user_id, value: current_user.id %>

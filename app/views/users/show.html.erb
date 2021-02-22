@@ -1,4 +1,8 @@
-<h2> Hey <%= @user.name %>! </h2>
+<% if current_user == @user %>
+<h1> Hey <%= @user.name %>! </h1>
+<% else %>
+<h1> <%= @user.name %> </h1>
+<% end %>
 
 <div class="container topic-info">
 <h2> <em> <u> Shared Knowledge </u> </em> </h2>

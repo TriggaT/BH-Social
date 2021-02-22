@@ -1,20 +1,20 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update]
+    before_action :find_topic, only:[:index, :new, :show, :edit]
 
     def index
-        find_topic
         @posts = Post.all 
     end 
     
     def new 
         @post = Post.new
-        find_topic
+        
     end 
 
     def create 
         @post = Post.new(post_params)
         if @post.save 
-            redirect_to topic_path(params[:post][:topic_id])
+            redirect_to topic_post_path(params[:post][:topic_id], @post)
         else 
             flash.now[:messages] = @post.errors.full_messages
             render :new 
@@ -22,18 +22,16 @@ class PostsController < ApplicationController
     end 
 
     def show 
-        find_topic
         @comment = Comment.new
     end 
 
     def edit
-        find_topic
     end
     
     def update
         if @post
             @post.update(post_params)
-            redirect_to topic_path(params[:post][:topic_id])
+            redirect_to topic_post_path(params[:post][:topic_id], @post)
         else
             flash.now[:messages] = @post.errors.full_messages
             render :edit  

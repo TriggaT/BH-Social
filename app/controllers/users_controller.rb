@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-    
-
 
     def new 
         @user = User.new 
@@ -24,7 +22,10 @@ class UsersController < ApplicationController
             @user = User.most_frequent_poster
             render :mf_poster
         else 
-        @user = User.find_by(id: params[:id])
+            if @user = User.find_by(id: params[:id])
+            else 
+            redirect_to "/"
+            end 
         end 
     end 
 
