@@ -1,17 +1,19 @@
 <h4>
+
 <% if @post %> 
-    <%= "#{comment.user.name}: #{comment.content}"  %> 
-<% elsif @question %> 
+    <% if comment.user = current_user %>
+    <%= link_to "#{comment.content}", edit_post_comment_path %>
+    <% else %> 
+    <%= "#{comment.user.name}: #{comment.content}"  %>
+    <% end %> 
+<% elsif @question %>
+    <% if comment.user = current_user %>
+    <%= link_to "#{comment.content}", edit_question_comment_path %>
+    <% else %>
     <% if comment.answer %>
        <div class="answers"> <%= "#{comment.user.name} answered #{comment.content}"%> </div>
     <% else %>
         <%= "#{comment.user.name}: #{comment.content}"  %> 
-    <% end %>
-<% else @user %>
-    <% if comment.answer %>
-      <div class="answers"> <%= "#{comment.user.name} answered #{comment.content}" %> </div>
-    <% else %>
-    <%= "#{comment.user.name}: #{comment.content}"  %>
     <% end %>
 <% end %>
 </h4>
