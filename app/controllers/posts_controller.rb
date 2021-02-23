@@ -25,6 +25,9 @@ class PostsController < ApplicationController
     end 
 
     def edit
+        if @post.user == current_user 
+        else redirect_to topic_post_path(params[:topic_id], @post)
+        end 
     end
     
     def update

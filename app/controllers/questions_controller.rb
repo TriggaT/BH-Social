@@ -27,6 +27,9 @@ class QuestionsController < ApplicationController
     end 
 
     def edit
+        if @question.user == current_user 
+        else redirect_to topic_question_path(params[:topic_id], @question)
+        end 
     end
     
     def update
