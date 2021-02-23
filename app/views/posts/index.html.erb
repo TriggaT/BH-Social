@@ -2,7 +2,5 @@
 
 <h2> Knowlege for sharing! </h2>
 
-<% @topic.posts.each do |post| %> 
-<h3> <%= link_to "#{post.title}", post_path(post) %> </h3>
-<% end %>
+<%= render :partial => "linked-display", :collection => @posts, :as => :post %>
 
