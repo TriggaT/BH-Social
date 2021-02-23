@@ -2,9 +2,7 @@
 
 <div class="container topic-info">
 <h2> <em> <u> Shared Knowledge </u> </em> </h2>
-<% @user.posts.reverse.each do |post| %>
-<h4><%= link_to "#{post.title.titlecase}", topic_post_path(post.topic, post) %> <br> </h4>
-<% end %>
+<%= render :partial => "posts/linked-display", :collection => @user.posts.reverse, :as => :post %>
 </div>
 
 <div class="container topic-info">
