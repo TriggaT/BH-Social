@@ -2,21 +2,14 @@
 
 <div class="container main-info">
 <h3> <em> <u> Knowledge for Sharing </u> </em> </h3> <br>
-<% @topic.posts.each do |post| %>
- <h4>  <%= link_to "#{post.title}", topic_post_path(@topic, post) %>  </h4> 
-<% end %>
-
+ <%= render :partial => "posts/linked-display", :collection => @topic.posts, :as => :post %>
 <br><br>
 <%= button_to "Drop Some Knowledge", new_topic_post_path(@topic), :method => :get, class: "button3"  %> 
-
 </div>
 
 <div class="container main-info">
 <h3> <em> <u>  Questions and Answers </u> </em> </h3> <br>
-<% @topic.questions.each do |question| %>
- <h4> <%= link_to "#{question.content}", topic_question_path(@topic, question) %>  </h4> 
-<% end %>
-
+<%= render :partial => "questions/linked-display", :collection => @topic.questions, :as => :question %>
 <br><br>
 <%= button_to "Post Question(s)", new_topic_question_path(@topic), :method => :get, class: "button3" %> <br><br>
  </div>
