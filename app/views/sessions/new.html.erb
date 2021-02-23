@@ -1,5 +1,5 @@
 <h1> Login </h1>
-
+<div class="messages"> <%= flash[:alert] if flash[:alert]  %> </div>
 <%= form_for @user, url: login_path, method: :post do |f| %>
 <div class="field">
   <%= f.label :name %><br />

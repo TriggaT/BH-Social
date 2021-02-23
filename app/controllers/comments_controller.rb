@@ -2,18 +2,15 @@ class CommentsController < ApplicationController
     before_action :find_comment, only: [:show, :edit, :update]
 
     def index 
-        @comments = Comment.all 
+        @comments = Comment.all
         set_post
     end 
 
     
     def new 
         @comment = Comment.new
-        binding.pry
         if @post 
-            set_post
         elsif @question
-            find_question
         else redirect_to :back
         end 
     end 

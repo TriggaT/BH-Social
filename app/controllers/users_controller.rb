@@ -29,9 +29,6 @@ class UsersController < ApplicationController
         end 
     end 
 
-    def index
-        redirect_to new_user_path 
-    end 
 
     def mf_poster
         @user = User.most_frequent_poster

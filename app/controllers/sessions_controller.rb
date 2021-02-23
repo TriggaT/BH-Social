@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
           session[:user_id] = @user.id
           redirect_to root_path
       else
-          flash[:alert] = "Your password is incorrect"
-          redirect_to login_path
+        flash.now.alert = "Invalid name or password"
+          render :new
       end  
           
   end
