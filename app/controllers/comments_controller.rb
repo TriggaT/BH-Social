@@ -1,17 +1,21 @@
 class CommentsController < ApplicationController
     before_action :find_comment, only: [:show, :edit, :update]
 
-    def index 
-        @comments = Comment.all
-        set_post
+    def index
+        if find_post
+            @comments = @post.comments
+        elsif find_question
+            @comments = @question.comments
+        else render :new
+        end 
     end 
 
     
     def new 
         @comment = Comment.new
-        if @post 
-        elsif @question
-        else redirect_to :back
+        if find_post
+        elsif find_question
+        else render :new
         end 
     end 
 

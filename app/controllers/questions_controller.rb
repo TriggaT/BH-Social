@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
     
-    before_action :find_question, only: [:show, :edit, :update, :solved]
+    before_action :set_question, only: [:show, :edit, :update, :solved]
     before_action :find_topic, only:[:index, :new, :show, :edit]
 
     def index
@@ -47,6 +47,9 @@ class QuestionsController < ApplicationController
     
 
     private 
+    def set_question
+        @question = Question.find_by(id: params[:id])
+      end
 
     def question_params
         params.require(:question).permit(:user_id, :topic_id, :answered, :content)

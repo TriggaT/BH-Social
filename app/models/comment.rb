@@ -12,7 +12,8 @@ class Comment < ApplicationRecord
         else 
             question.topic
         end 
-    end   
+    end
+
 
 
 

@@ -9,17 +9,15 @@ class ApplicationController < ActionController::Base
     User.find_by(id: session[:user_id])
   end 
 
-
-
   private 
 
-    def set_post
-        @post = Post.find_by(id: params[:id])
+    def find_post
+        @post = Post.find_by(id: params[:post_id])
     end
 
 
     def find_question
-      @question = Question.find_by(id: params[:id])
+      @question = Question.find_by(id: params[:question_id])
     end
     
     def find_topic
