@@ -14,7 +14,7 @@ in African or African-American history, with the title being the person, place, 
 categories to other people and users of <strong> Black History Social</strong>. Everyone is able to comment on other posts or questions, and you can also attempt 
 to answer other user's questions but only they can determine if the question has been answered. </h4> <br>
 
-<h4> You currently have <%= current_user.posts.count %> posts, <%=  current_user.questions.count %> questions, and <%= current_user.comments.count %> comment(s)/answer(s). </h4> 
+<h4> You currently have <%= current_user.posts.count %> posts, <%=  current_user.questions.count %> questions, and <%= current_user.comments_to_posts.count + current_user.comments_to_questions.count %> comment(s)/answer(s). </h4> 
 <h4> <u> <%= link_to "View Profile", user_path(current_user) %> </u></h4> 
 
 <%= button_to "Most Frequent Poster", most_posts_path, :method => :post, class: "button3"  %> 

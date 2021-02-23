@@ -23,8 +23,9 @@
 
 <div class="container topic-info">
 <h2> <em> <u> Comments/Answers </u> </em> </h2>
-<% if current_user %>
+<% if current_user == @user %>
 <%= render :partial => "comments/display", :collection => @user.comments_to_posts.reverse, :as => :comment %>
+<%= render :partial => "comments/display", :collection => @user.comments_to_questions.reverse, :as => :comment %>
 <% else %>
 <%= render :partial => "comments/display", :collection => @user.comments.reverse, :as => :comment %>
 <% end%>

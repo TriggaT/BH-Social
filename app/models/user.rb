@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :posts
   has_many :comments_to_posts, :through => :posts, source: :comments 
+  has_many :comments_to_questions, :through => :questions, source: :comments
   has_many :questions
   has_many :topics, through: :posts
   has_many :comments 
