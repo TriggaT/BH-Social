@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     before_action :find_comment, only: [:show, :edit, :update]
+    helper_method :comment_title
 
     def index
         if find_post
@@ -29,13 +30,13 @@ class CommentsController < ApplicationController
         end  
     end 
 
-    def show 
-    end 
 
     def edit
-        if find_post
-        elsif find_question
-        else render :edit
+        if @comment.user == current_user 
+            if find_post
+            elsif find_question
+            end 
+        else redirect_to topic_path(@comment.topic) 
         end 
     end
     

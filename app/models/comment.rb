@@ -13,6 +13,7 @@ class Comment < ApplicationRecord
             question.topic
         end 
     end
+    
 
 
 

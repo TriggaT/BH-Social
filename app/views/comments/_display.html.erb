@@ -2,14 +2,13 @@
 
 <% if @post %> 
     <% if comment.user == current_user %>
-    <% binding.pry %>
-    <%= link_to "#{comment.content}", edit_post_comment_path(@post,comment) %> <br>
+    <%= link_to "You said #{comment.content}", edit_post_comment_path(@post,comment) %> <br>
     <% else %> 
     <%= "#{comment.user.name}: #{comment.content}"  %> <br>
     <% end %> 
 <% elsif @question %>
     <% if comment.user == current_user %>
-    <%= link_to "#{comment.content}", edit_question_comment_path(@question, comment) %> <br>
+    <%= link_to "You said #{comment.content}", edit_question_comment_path(@question, comment) %> <br>
     <% else %>
     <% if comment.answer %>
        <div class="answers"> <%= "#{comment.user.name} answered #{comment.content}"%> <br> </div>
