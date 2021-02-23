@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
     before_action :find_comment, only: [:show, :edit, :update]
-    helper_method :comment_title
 
     def index
         if find_post
@@ -44,7 +43,7 @@ class CommentsController < ApplicationController
         if @comment && @comment.post
             @comment.update(comment_params)
             redirect_to topic_post_path(@comment.topic, @comment.post)
-        elsif @comment && @comment.quesion
+        elsif @comment && @comment.question
             @comment.update(comment_params) 
             redirect_to topic_question_path(@comment.topic, @comment.question)
         else redirect_to :edit

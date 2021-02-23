@@ -6,7 +6,7 @@
     <% else %> 
     <%= "#{comment.user.name}: #{comment.content}"  %> <br>
     <% end %> 
-<% elsif @question %>
+<% elsif @question || @user %>
     <% if comment.user == current_user %>
     <%= link_to "You said #{comment.content}", edit_question_comment_path(@question, comment) %> <br>
     <% else %>

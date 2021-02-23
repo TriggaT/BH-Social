@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   end
 
   resources :questions do 
-    resources :comments
+    resources :comments, except: [:show, :delete]
   end 
 
   resources :posts do 
-    resources :comments
+    resources :comments, except: [:show, :delete]
   end 
 
 
