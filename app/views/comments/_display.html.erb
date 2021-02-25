@@ -5,9 +5,9 @@
     <% else %> 
     <%= "#{comment.user.name}: #{comment.content}"  %> <br>
     <% end %> 
-<% else @question || @user %>
+<% else @question %>
     <% if comment.user == current_user %>
-    <%= link_to "You said #{comment.content}", edit_post_comment_path(@post,comment) %> 
+    <%= link_to "You said #{comment.content}", edit_question_comment_path(@question,comment) %> 
     <% else %> 
         <% if comment.answer %>
             <div class="answers"> <%= "#{comment.user.name} answered #{comment.content}"%> </div>

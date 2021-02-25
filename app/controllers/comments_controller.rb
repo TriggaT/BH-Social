@@ -25,7 +25,9 @@ class CommentsController < ApplicationController
             redirect_to topic_post_path(@comment.topic, @comment.post)
         elsif @comment.save && @comment.question
             redirect_to topic_question_path(@comment.topic, @comment.question)
-        else render :new 
+        else 
+            question_or_post
+            render :new 
         end  
     end 
 
@@ -46,7 +48,8 @@ class CommentsController < ApplicationController
         elsif @comment && @comment.question
             @comment.update(comment_params) 
             redirect_to topic_question_path(@comment.topic, @comment.question)
-        else redirect_to :edit
+        else question_or_post
+            redirect_to :edit
         end  
     end 
     

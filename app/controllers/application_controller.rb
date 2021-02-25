@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
       @post ? @post.title : @question.content
     end 
 
+    def question_or_post
+      if find_question
+      else find_post
+      end 
+    end 
+
 
     def find_question
       @question = Question.find_by(id: params[:question_id])
